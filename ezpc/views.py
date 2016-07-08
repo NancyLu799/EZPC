@@ -64,7 +64,6 @@ def home(request):
         
         #call perl program
         pipe = subprocess.Popen(["perl", ezpcfile, featureFileName, ccFileName, rcFileName, gcFileName, minFileName, maxFileName, solutionfileName], stdout=subprocess.PIPE, shell=True)
-        pipe = subprocess.Popen(["perl", "C:/Users/NancyLu/Desktop/VyasSekar/EZ-PC/extract_solution.pl", 'C:/Users/NancyLu/Desktop/VyasSekar/EZ-PC/solution.txt'], stdout = subprocess.PIPE)
         print("subprocess completed.")        
         
         return HttpResponseRedirect(reverse('fileupload'))
