@@ -1,0 +1,11 @@
+Minimize
+ Cost:   d_Foo + d_Blah 
+Subject To
+TOTALPCSIZEMAX: d_Foo + d_Blah  <= 1
+TOTALPCSIZEMIN: d_Foo + d_Blah  >= 0
+CANDIDATE.Foo:  d_Foo = 0
+CANDIDATE.Blah:  d_Blah = 1
+Binaries
+d_Foo
+d_Blah
+End
