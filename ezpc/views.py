@@ -33,6 +33,7 @@ def submit(request):
     instance = Upload(files = afile)
     instance.save()
     
+<<<<<<< HEAD
     afile = request.FILES['rcFile']
     rcFileName = settings.MEDIA_ROOT + '/files/' + str(afile)
     rcFileName = rcFileName.replace('\\','/')
@@ -60,6 +61,26 @@ def submit(request):
     print('maxFile:' + maxFileName)
     instance = Upload(files = afile)
     instance.save()
+=======
+        ezpcfile = os.path.abspath("ezpc/ezpc.pl")
+        ezpcfile = ezpcfile.replace('\\','/')
+        
+        solutionfileName = settings.MEDIA_ROOT + '/files/' + 'solution.txt'
+        solutionfileName = solutionfileName.replace('\\', '/')
+        print (solutionfileName)
+        
+        #call perl program
+        pipe = subprocess.Popen(["perl", ezpcfile, featureFileName, ccFileName, rcFileName, gcFileName, minFileName, maxFileName, solutionfileName], stdout=subprocess.PIPE, shell=True)
+        print("subprocess completed.")        
+        
+        return HttpResponseRedirect(reverse('fileupload'))
+    else:
+        file=UploadForm()
+        
+    files=Upload.objects.all()
+    #return("abc")
+    return render(request,'ezpc/home.html',{'form':file,'files':file})
+>>>>>>> ea4cb294479a79adde6d54ffa792ae02afcd048b
 
     ezpcfile = os.path.abspath("ezpc/ezpc.pl")
     ezpcfile = ezpcfile.replace('\\','/')
