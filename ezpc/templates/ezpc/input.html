@@ -1,78 +1,63 @@
 <!DOCTYPE html>
-    
-
 <html>
-<head>
-  <title>EZPC</title></head>
-
-
-<script>
-  function clicked(e)
-  {
-    if (!confirm('Are you sure?'))
-    {
-      e.preventDefault();
-      alert('Aborted');
-    }
-    else
-    {
-      alert('Submitted!');
-      document.myform.submit();
-    }
-  }
-</script>
-
-<h1><font size="10" color="blue">EZPC Tool</font></h1>
-
-<form id = 'myform' action="#" method="post" enctype="multipart/form-data" >
- {% csrf_token %}
- 
-<table style="width:auto%">
-  <tr>
-    <td>Features File</td>
-
-    <td><input id="featureFile" name="featureFile" type="file" /></td>
-  </tr>
-
-  <tr>
-    <td>Column Constraints File</td>
-
-    <td><input id="ccFile" name="ccFile" type="file" /></td>
-  </tr>
-
- <tr>
-    <td>Row Constraints File</td>
-
-    <td><input id="rcFile" name="rcFile" type="file" /></td>
-  </tr>
-
-  <tr>
-    <td>Group Constraints File</td>
-
-    <td><input id="gcFile" name="gcFile" type="file" /></td>
-  </tr>
-
-  <tr>
-    <td>PC Size Minimum File</td>
-
-    <td><input id="minFile" name="minFile" type="file" /></td>
-  </tr>
-
-  <tr>
-    <td>PC Size Maximum File</td>
-
-    <td><input id="maxFile" name="maxFile" type="file" /></td>
-  </tr></table>
-
-
-
-<input type="submit" onclick="clicked(event);"/>
-
-
-
-</form>
-
-
-
-
+  <head>
+    <title>EZPC</title></head>
+    <script>
+      function clicked(e)
+      {
+        //check all files are selected.
+        //TODO.....
+        
+        if (!confirm('This will execute the program. Do you want to continue?'))
+        {
+          e.preventDefault();
+        }
+        else
+        {
+          document.myform.submit();
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1><font size="10" color="blue">EZPC Tool</font></h1>
+    
+    <form id='myform' target="frameOutput" action="/home/submit" method="post" enctype="multipart/form-data" >
+      {% csrf_token %}
+     
+      <table style="width:100%">
+        <tr>
+          <td width="170">Features File</td>    
+          <td><input id="featureFile" name="featureFile" type="file" size="80" /></td>
+        </tr>
+      
+        <tr>
+          <td>Column Constraints File</td>    
+          <td><input id="ccFile" name="ccFile" type="file" size="80"/></td>
+        </tr>
+      
+        <tr>
+          <td>Row Constraints File</td>    
+          <td><input id="rcFile" name="rcFile" type="file" size="80"/></td>
+        </tr>
+      
+        <tr>
+          <td>Group Constraints File</td>    
+          <td><input id="gcFile" name="gcFile" type="file" size="80"/></td>
+        </tr>
+      
+        <tr>
+          <td>PC Size Minimum File</td>    
+          <td><input id="minFile" name="minFile" type="file" size="80"/></td>
+        </tr>
+      
+        <tr>
+          <td>PC Size Maximum File</td>   
+          <td><input id="maxFile" name="maxFile" type="file" size="80"/></td>
+        </tr>
+      </table>
+    
+      <input type="submit" onclick="clicked(event);"/>   
+    </form>
+  </body>
 <html>

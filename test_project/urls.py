@@ -20,8 +20,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-urlpatterns = [url(r'^home/$', 'ezpc.views.home', name='fileupload'), 
-    url(r'^admin/', admin.site.urls)]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = [url(r'^home/$',      'ezpc.views.home',   name='home'),
+               url(r'^home/input',  'ezpc.views.input',  name='input'),
+               url(r'^home/submit', 'ezpc.views.submit', name='submit'),
+               url(r'^admin/', admin.site.urls)] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
 
