@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 import os
 import subprocess
+from subprocess import Popen
 import time
 
 # Create your views here.
@@ -33,7 +34,6 @@ def submit(request):
     instance = Upload(files = afile)
     instance.save()
     
-<<<<<<< HEAD
     afile = request.FILES['rcFile']
     rcFileName = settings.MEDIA_ROOT + '/files/' + str(afile)
     rcFileName = rcFileName.replace('\\','/')
@@ -48,52 +48,30 @@ def submit(request):
     instance = Upload(files = afile)
     instance.save()
     
-    afile = request.FILES['minFile']
-    minFileName = settings.MEDIA_ROOT + '/files/' + str(afile)
-    minFileName = minFileName.replace('\\','/')
-    print('minFile:' + minFileName)
-    instance = Upload(files = afile)
-    instance.save()
-    
-    afile = request.FILES['maxFile']
-    maxFileName = settings.MEDIA_ROOT + '/files/' + str(afile)
-    maxFileName = maxFileName.replace('\\','/')
-    print('maxFile:' + maxFileName)
-    instance = Upload(files = afile)
-    instance.save()
-=======
-        ezpcfile = os.path.abspath("ezpc/ezpc.pl")
-        ezpcfile = ezpcfile.replace('\\','/')
-        
-        solutionfileName = settings.MEDIA_ROOT + '/files/' + 'solution.txt'
-        solutionfileName = solutionfileName.replace('\\', '/')
-        print (solutionfileName)
-        
-        #call perl program
-        pipe = subprocess.Popen(["perl", ezpcfile, featureFileName, ccFileName, rcFileName, gcFileName, minFileName, maxFileName, solutionfileName], stdout=subprocess.PIPE, shell=True)
-        print("subprocess completed.")        
-        
-        return HttpResponseRedirect(reverse('fileupload'))
-    else:
-        file=UploadForm()
-        
-    files=Upload.objects.all()
-    #return("abc")
-    return render(request,'ezpc/home.html',{'form':file,'files':file})
->>>>>>> ea4cb294479a79adde6d54ffa792ae02afcd048b
+    min = request.POST.get("min")
+    max = request.POST.get("max")
 
     ezpcfile = os.path.abspath("ezpc/ezpc.pl")
     ezpcfile = ezpcfile.replace('\\','/')
+    
+    parsedfile = os.path.abspath("ezpc/extract_solution.pl")
+    parsedfile = parsedfile.replace('\\', '/')
     
     solutionfileName = settings.MEDIA_ROOT + '/files/' + 'solution.txt'
     solutionfileName = solutionfileName.replace('\\', '/')
     print (solutionfileName)
     
+    tablefileName = settings.MEDIA_ROOT + '/files/' + 'solution.csv'
+    tablefileName = tablefileName.replace('\\', '/')
+    
     #call perl program
-    pipe = subprocess.Popen(["perl", ezpcfile, featureFileName, ccFileName, rcFileName, gcFileName, minFileName, maxFileName, solutionfileName], stdout=subprocess.PIPE, shell=True)
-    pipe = subprocess.Popen(["perl", "C:/Users/NancyLu/Desktop/VyasSekar/EZ-PC/extract_solution.pl", 'C:/Users/NancyLu/Desktop/VyasSekar/EZ-PC/solution.txt'], stdout = subprocess.PIPE)
-    print("subprocess completed.")
+    pipe = subprocess.Popen(["perl", ezpcfile, featureFileName, ccFileName, rcFileName, gcFileName, min, max, solutionfileName], stdout=subprocess.PIPE, shell=True)
+    print("subprocess 1 completed.")
+    time.sleep(1)
+    pipe = subprocess.Popen(["perl", parsedfile, solutionfileName])
+    print("subprocess 2 completed")
     
     time.sleep(2)
-    return HttpResponseRedirect("/media/files/solution.txt")
+    return HttpResponseRedirect('/media/files/parsedsolution.txt')
+
 # Create your views here.

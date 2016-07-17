@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EZPC</title></head>
-    <script>
+    <title>EZPC</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cosmo/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      
+  </head>
+
+  <script>
       function clicked(e)
       {
         //check all files are selected.
@@ -17,47 +26,116 @@
           document.myform.submit();
         }
       }
-    </script>
-  </head>
+  </script>
   <body>
-    <h1><font size="10" color="blue">EZPC Tool</font></h1>
+    <div class="container">
+        <h1><b>EZPC Tool: </b><i>Program Committee Selection Made Easy</i></h1>
+        <ul class="nav nav-pills">
+          <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
+          <li><a data-toggle="pill" href="#menu1">Create Files</a></li>
+          <li><a data-toggle="pill" href="#menu2">Example Files</a></li>
+          <li><a data-toggle="pill" href="#menu3">More About Tool</a></li>
+          <li><a data-toggle="pill" href="#menu4">Contact Us</a></li>
+        </ul>
+      <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <p>Please convert all files into CSV files.
+               If you have not created your files yet, click the "Create Files" tab.
+               If you need detailed instructions, click the "Example Files" tab.
+               If you would like to know more, click the "About this Tool" tab.
+               To use the tool, upload your files below.</p>
     
-    <form id='myform' target="frameOutput" action="/home/submit" method="post" enctype="multipart/form-data" >
-      {% csrf_token %}
-     
-      <table style="width:100%">
-        <tr>
-          <td width="170">Features File</td>    
-          <td><input id="featureFile" name="featureFile" type="file" size="80" /></td>
-        </tr>
-      
-        <tr>
-          <td>Column Constraints File</td>    
-          <td><input id="ccFile" name="ccFile" type="file" size="80"/></td>
-        </tr>
-      
-        <tr>
-          <td>Row Constraints File</td>    
-          <td><input id="rcFile" name="rcFile" type="file" size="80"/></td>
-        </tr>
-      
-        <tr>
-          <td>Group Constraints File</td>    
-          <td><input id="gcFile" name="gcFile" type="file" size="80"/></td>
-        </tr>
-      
-        <tr>
-          <td>PC Size Minimum File</td>    
-          <td><input id="minFile" name="minFile" type="file" size="80"/></td>
-        </tr>
-      
-        <tr>
-          <td>PC Size Maximum File</td>   
-          <td><input id="maxFile" name="maxFile" type="file" size="80"/></td>
-        </tr>
-      </table>
+            <form id='myform' target="frameOutput" action="/home/submit" method="post" enctype="multipart/form-data" >
+              {% csrf_token %}
+             
+              <table style="width:100%">
+                <tr>
+                  <td width="190">Candidate Features</td>    
+                  <td><input id="featureFile" name="featureFile" type="file" size="80" /></td>
+                </tr>
+              
+                <tr>
+                  <td>Column Constraints File</td>    
+                  <td><input id="ccFile" name="ccFile" type="file" size="80"/></td>
+                </tr>
+              
+                <tr>
+                  <td>Candidate Availability</td>    
+                  <td><input id="rcFile" name="rcFile" type="file" size="80"/></td>
+                </tr>
+              
+                <tr>
+                  <td>Group Constraints File</td>    
+                  <td><input id="gcFile" name="gcFile" type="file" size="80"/></td>
+                </tr>
+              
+                <tr>
+                  <td>PC Size Minimum</td>    
+                  <td><input id="id_min" name="min" type="number" size = "5"/></td>
+                </tr>
+              
+                <tr>
+                  <td>PC Size Maximum</td>   
+                  <td><input id="id_max" name="max" type="number" size="5"/></td>
+                </tr>
+              </table>
+              <input type="submit" onclick="clicked(event);"/>
+              <a href="/media/files/template_features.txt" download="fulltable.csv">   Download Full Table   </a>
+              <a href="/media/files/solution.txt" download="solveroutput.csv">   Download Solver Output  </a>
+            </form>
+        </div>
     
-      <input type="submit" onclick="clicked(event);"/>   
-    </form>
-  </body>
+      <div id="menu1" class="tab-pane fade">
+        <h3>Create your files here!</h3>
+        <iframe width="1250" height="300" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?cid=A18168B5970AE4C5&resid=A18168B5970AE4C5%21114&authkey=AOArIrmKD3IIGIg&em=2&AllowTyping=True&ActiveCell='Sheet1'!A1&wdDownloadButton=True"></iframe>
+        <p>After you have finished: download the file by clicking the leftmost icon
+        in the lower right corner. Then save you file on your computer as a csv file.</p>
+        <p>To view the whole workbook, click the righmost icon in the lower right corner.</p>
+      </div>
+      
+      <div id="menu2" class="tab-pane fade">
+        <h3> Detailed Directions: </h3>
+        <a href="https://users.ece.cmu.edu/~vsekar/papers/ezpc.pdf">Click for more details</a></h2></p>
+        <p> Example of Candidate Features: Name,Area1,Area2,Area3Alice,1,0,1Bob,0,1,1Eve,0,0,1</p>
+        <p> Example of Feature Constraints: Area1,3,50</p>
+        <p> Example of Availability Constraints: Alice,1Bob,0</p>
+        <p> Example of Group Constraints: XYZ Alice,Bob,Eve 2</p>
+      </div>
+    
+      <!--The following code is adapted from https://users.ece.cmu.edu/~vsekar/ezpc.html -->
+      <div id="menu3" class="tab-pane fade">
+        <p style="float: left;"><img src="https://users.ece.cmu.edu/~vsekar/ezpcoverview.jpg" height="300"></p>
+        <p>
+            Selecting a technical program committee (PC) for a conference or a workshop
+            can be a somewhat intimidating and time consuming process. PC selection needs
+            to balance several potential considerations; e.g., industry vs. academic
+            participation, inclusion of under-represented communities, ensuring
+            coverage over topic areas, among others.
+        </p>
+        <p>
+            This page provides an open source tool called EZ-PC. In a nutshell, EZ-PC
+            helps formulate some of these considerations as a simple constraint
+            satisfaction problem to help PC chairs systematize this selection process.
+        </p>
+        
+        <p style="clear: left;"><h2> <a href="https://drive.google.com/drive/folders/0B85E2Er3fYuZaGgzZnAyWG9iTms">View Source Code</a></h2></p>
+      </div>
+
+      <div id="menu4" class="tab-pane fade">
+        <h3>Contact us</h3>
+        <p>This webapp was developed by Dr. Vyas Sekar of Carnegie Mellon University.</p>
+        <form action="MAILTO:nancylu799@gmail.com" method="post" enctype="text/plain">
+          Name:<br>
+          <input type="text" name="name" value=""><br>
+          E-mail:<br>
+          <input type="text" name="mail" value=""><br>
+          Comment: <br>
+          <input type="text name="comment" value="" size="50"><br><br>
+          <input type="submit" value="Send">
+          <input type="reset" value="Reset">
+        </form>
+      </div>    
+    </div>
+  </body> 
 <html>
+  

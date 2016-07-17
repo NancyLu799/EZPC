@@ -1,0 +1,3 @@
+Name,CDN,ARCH,MEAS
+Foo,1,0,1
+Blah,0,0,1

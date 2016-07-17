@@ -13,20 +13,10 @@ my $inputfile = $ARGV[0];
 my $constraintsfile = $ARGV[1];
 my $rowconstraintsfile = $ARGV[2];
 my $groupconstraintsfile = $ARGV[3];
-my $pcsizeminfile = $ARGV[4];
-my $pcsizemaxfile = $ARGV[5];
+my $pcsizemin = $ARGV[4];
+my $pcsizemax = $ARGV[5];
 my $formulationfile = "formulation.ilp";
 my $solutionfile = $ARGV[6];
-
-open (f,"<$pcsizeminfile") or die "Cant read configfile\n";
-my $pcsizemin = do { local $/; <f> };
-print "$pcsizemin";
-close(f);
-open (f,"<$pcsizemaxfile") or die "Cant read configfile\n";
-my $pcsizemax = do { local $/; <f> };
-close(f);
-print "$pcsizemax";
-
 open (f,"<$inputfile") or die "Cant read configfile\n";
 
 my $firstline = <f>;
@@ -39,6 +29,7 @@ my %candidates_features = ();
 my %features_candidates = ();
 my %candidates_index= ();
 my %index_candidates= ();
+
 
 my $data = "";
 my $numcandidates = 0;

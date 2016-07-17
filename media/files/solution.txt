@@ -8,7 +8,7 @@ Objective:  Cost = 1 (MINimum)
    No.   Row name        Activity     Lower bound   Upper bound
 ------ ------------    ------------- ------------- -------------
      1 TOTALPCSIZEMAX
-                                   1                           1 
+                                   1                           2 
      2 TOTALPCSIZEMIN
                                    1             0               
      3 CANDIDATE.Foo
