@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ezpc'
 ]
-SESSION_ENGINE = "django.contrib.sessions.backends.file" 
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 

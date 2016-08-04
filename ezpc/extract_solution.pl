@@ -18,21 +18,12 @@ while ($data = <f>)
 	{
 		$currentcandidate = $1;
 	}
-	if ($data =~  /\*\s+0\s+0\s+1/)
-	{
-		
-		open(my $fh, '>', "media/files/parsedsolution.txt");
-		print $fh "Not Selected: $currentcandidate\n";
-		close $fh;
-		print "Selected: $currentcandidate";
-		
-	}
+	
 	if ($data =~  /\*\s+1\s+0\s+1/)
 	{
-		open(my $fh, '>>', "media/files/parsedsolution.txt");
-		print $fh "Selected: $currentcandidate\n";
+		open(my $fh, '>>', "$ARGV[1]");
+		print $fh "$currentcandidate,";
 		close $fh;
-		print "Selected: $currentcandidate";
 	}
 	
 }

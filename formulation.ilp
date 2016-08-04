@@ -1,11 +1,11 @@
 Minimize
- Cost:   d_Foo + d_Blah 
+ Cost:   d_Fooo + d_Blahh 
 Subject To
-TOTALPCSIZEMAX: d_Foo + d_Blah  <= 2
-TOTALPCSIZEMIN: d_Foo + d_Blah  >= 0
-CANDIDATE.Foo:  d_Foo = 0
-CANDIDATE.Blah:  d_Blah = 1
+TOTALPCSIZEMAX: d_Fooo + d_Blahh  <= 2
+TOTALPCSIZEMIN: d_Fooo + d_Blahh  >= 0
+CANDIDATE.Fooo:  d_Fooo = 0
+CANDIDATE.Blahh:  d_Blahh = 1
 Binaries
-d_Foo
-d_Blah
+d_Fooo
+d_Blahh
 End

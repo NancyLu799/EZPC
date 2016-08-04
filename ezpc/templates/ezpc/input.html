@@ -14,8 +14,6 @@
   <script>
       function clicked(e)
       {
-        //check all files are selected.
-        //TODO.....
         
         if (!confirm('This will execute the program. Do you want to continue?'))
         {
@@ -26,6 +24,7 @@
           document.myform.submit();
         }
       }
+
   </script>
   <body>
     <div class="container">
@@ -80,8 +79,6 @@
                 </tr>
               </table>
               <input type="submit" onclick="clicked(event);"/>
-              <a href="/media/files/template_features.txt" download="fulltable.csv">   Download Full Table   </a>
-              <a href="/media/files/solution.txt" download="solveroutput.csv">   Download Solver Output  </a>
             </form>
         </div>
     
@@ -123,7 +120,9 @@
 
       <div id="menu4" class="tab-pane fade">
         <h3>Contact us</h3>
-        <p>This webapp was developed by Dr. Vyas Sekar of Carnegie Mellon University.</p>
+        <p>This webapp was developed by Dr. Vyas Sekar of Carnegie Mellon University and Nancy Lu.
+          If you have any questions, comments, or suggestions, please use the form below.
+        </p>
         <form action="MAILTO:nancylu799@gmail.com" method="post" enctype="text/plain">
           Name:<br>
           <input type="text" name="name" value=""><br>

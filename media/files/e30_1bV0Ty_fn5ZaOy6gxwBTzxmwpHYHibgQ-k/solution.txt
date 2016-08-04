@@ -11,15 +11,15 @@ Objective:  Cost = 1 (MINimum)
                                    1                           2 
      2 TOTALPCSIZEMIN
                                    1             0               
-     3 CANDIDATE.Foo
+     3 CANDIDATE.Fooo
                                    0             0             = 
-     4 CANDIDATE.Blah
+     4 CANDIDATE.Blahh
                                    1             1             = 
 
    No. Column name       Activity     Lower bound   Upper bound
 ------ ------------    ------------- ------------- -------------
-     1 d_Foo        *              0             0             1 
-     2 d_Blah       *              1             0             1 
+     1 d_Fooo       *              0             0             1 
+     2 d_Blahh      *              1             0             1 
 
 Integer feasibility conditions:
 

@@ -1,2 +1,0 @@
-Not Selected: Foo
-Selected: Blah
